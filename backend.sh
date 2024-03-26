@@ -4,6 +4,9 @@ dnf module enable nodejs:20 -y
 dnf install nodejs -y
 
 useradd expense
+cp backend.service /etc/systemd/system/backend.service
+
+rm -rf /app
 
 mkdir /app
 
@@ -14,7 +17,6 @@ unzip /tmp/backend.zip
 cd /app
 npm install
 
-cp backend.service /etc/systemd/system/backend.service
 
 systemctl daemon-reload
 
