@@ -1,9 +1,7 @@
-mysql_root_password=$1
+source common.sh
 
-Print_Task_Heading(){
-  echo $1
-  echo "############# $1 ############" &>>/tmp/expense.log
-}
+
+mysql_root_password=$1
 
 Print_Task_Heading "disable default nodejs version module"
 dnf module disable nodejs -y  &>>/tmp/expense.log
@@ -59,7 +57,7 @@ systemctl enable backend &>>/tmp/expense.log
 systemctl start backend &>>/tmp/expense.log
 
 echo $?
-Print_Task_Heading"install Mysql Client"
+Print_Task_Heading  "install Mysql Client"
 dnf install mysql -y &>>/tmp/expense.log
 
 echo $?
