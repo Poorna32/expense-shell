@@ -17,7 +17,6 @@ Print_Task_Heading "enable nodejs module for v20"
 dnf module enable nodejs:20 -y &>>/tmp/expense.log
 
 check_status $?
-
 Print_Task_Heading "Install nodejs"
 
 dnf install nodejs -y &>>/tmp/expense.log
