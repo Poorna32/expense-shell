@@ -1,5 +1,11 @@
+mysql_root_password=$1
+
+echo disable default nodejs version module
 dnf module disable nodejs -y  &>>/tmp/expense.log
+echo enable nodejs module for v20
 dnf module enable nodejs:20 -y &>>/tmp/expense.log
+
+echo Install nodejs
 
 dnf install nodejs -y &>>/tmp/expense.log
 
@@ -25,4 +31,4 @@ systemctl start backend &>>/tmp/expense.log
 
 dnf install mysql -y &>>/tmp/expense.log
 
-mysql -h 172.31.37.143 -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>/tmp/expense.log
+mysql -h 172.31.37.143 -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>/tmp/expense.log
