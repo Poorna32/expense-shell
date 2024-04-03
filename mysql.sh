@@ -8,13 +8,13 @@ fi
 
 Print_Task_Heading "Install Nginx"
 dnf install mysql-server -y  &>>$LOG
-Check_status $?
+check_status $?
 
 Print_Task_Heading "Install Nginx"
 systemctl enable mysqld  &>>$LOG
 systemctl start mysqld  &>>$LOG
-Check_status $?
+check_statusheck_status $?
 
 Print_Task_Heading "Install Nginx"
 mysql_secure_installation --set--root--pass ${mysql_root_password} &>>$LOG
-Check_status $?
+check_status $?
