@@ -1,8 +1,8 @@
 source common.sh
 
-mysql_root_password=$1
-if [ -z "${mysql_root_password}" ];then
-  echo "Input password id missing"
+mysql_root_password= $1
+if [ -z "${mysql_root_password}" ]; then
+  echo "Input password is missing"
   exit 1
 fi
 
@@ -16,5 +16,5 @@ systemctl start mysqld  &>>$LOG
 check_statusheck_status $?
 
 Print_Task_Heading "setup Mysql Password"
-mysql_secure_installation --set--root--pass ${mysql_root_password} &>>$LOG
+mysql_secure_installation --set--root-pass ${mysql_root_password} &>>$LOG
 check_status $?
